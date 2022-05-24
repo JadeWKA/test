@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  margin: 3rem;
+  background: linear-gradient(-45deg, #97edcf, #4658cd, #23a6d5, #1455af);
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/dot-auth-dev.appspot.com/o/profile-photos%2Fdot-mountain-bg.jpg?alt=media&token=9545d786-cfae-48d7-90f1-b70d89e089bc");
+  background-size: 400% 400%;
+  animation: nudge 15s ease infinite alternate;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.p {
+  text-shadow: 0 5px 5px rgba(0, 0, 0, 0.202);
+}
+
+h1 {
+  text-shadow: 0 5px 5px rgba(0, 0, 0, 0.202);
+  color: #000000;
+  font-family: "Merriweather", serif;
+}
+h2 {
+  color: #000000;
+  /* font-family: "Catamaran", sans-serif; */
+  font-family: "Ubuntu";
+  font-weight: bold;
+}
+
+h4 a {
+  text-decoration: none;
+}
+
+h5 a {
+  text-decoration: none;
+}
+
+.aboutUsCard {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 20rem;
+  margin: 2rem;
+}
+
+.actions {
+  text-align: center;
+  width: 100%;
+}
+
+.alreadyAccount {
+  background-color: #000000;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.btn.btn-custom:hover {
+  text-decoration: none;
+}
+
+.btn.btn-custom {
+  font-family: "Merriweather", serif;
+  text-decoration: none;
+  font-size: 3rem;
+  color: black;
+  display: block;
+  width: 50%;
+  padding: 12px;
+
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: rgba(43, 140, 129, 255);
+  color: white;
+  border: 1px solid rgba(43, 140, 129, 255);
+  margin: 0 1rem;
+  text-align: center;
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.164);
+  font-family: "Merriweather", serif;
+}
+
+.btn-signup {
+  width: 100px;
+  background-color: rgba(43, 140, 129, 255);
+  color: rgba(43, 140, 129, 255);
+}
+
+.btn:hover {
+  background-color: rgba(10, 142, 105, 0.502);
+}
+
+.btn--alt {
+  background-color: transparent;
+  color: #800040;
+}
+
+.btn--alt:hover {
+  background-color: #f8dae9;
+}
+
+.btn--logout {
+  font: red;
+}
+
+.card {
+  background-color: #aac6e1;
+  /* border-radius: 4px; */
+  /* alternative border radius to make the cards rounder*/
+  border-radius: 40%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  margin: 2.7rem;
+}
+
+.card-body {
+  text-align: left;
+}
+
+.card-body a {
+  text-decoration: none;
+  text-align: left;
+}
+
+.card-title {
+  color: #000000;
+}
+.card-text {
+  color: #000000;
+}
+
+.card1 {
+  /* background-color: #3498db; */
+  background-color: #ffd071;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  height: 680px;
+  margin: 2.7rem;
+}
+
+.card2 {
+  background-color: #f0776c;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  height: 680px;
+  margin: 2.7rem;
+}
+
+.card3 {
+  background-color: #3498db;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  height: 680px;
+  margin: 2.7rem;
+}
+
+.card4 {
+  background-color: #ae1623;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  height: 680px;
+  margin: 2.7rem;
+}
+
+.card5 {
+  background-color: #90bc1f;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  height: 680px;
+  margin: 2.7rem;
+}
+
+.card6 {
+  background-color: #1abc9c;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 30rem;
+  height: 680px;
+  margin: 2.7rem;
+}
+
+.column {
+  float: left;
+  width: 20%;
+}
+
+.dotAnimation {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  animation: cowmove 10s linear infinite;
+}
+
+@keyframes cowmove {
+  0% {
+    transform: translateX(0rem) rotate(0deg);
+  }
+  30% {
+    transform: translateX(10rem) rotate(90deg);
+  }
+  50% {
+    transform: translateX(20rem) rotate(180deg);
+  }
+  80% {
+    transform: translateX(10rem) rotate(270deg);
+  }
+  100% {
+    transform: translateX(0rem) rotate(360deg);
+  }
+}
+
+.flexbox-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.homepageDiv {
+  /* background-color: white; */
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/dot-auth-dev.appspot.com/o/profile-photos%2Fdot-mountain-bg.jpg?alt=media&token=9545d786-cfae-48d7-90f1-b70d89e089bc");
+}
+
+.hometown {
+  width: 100%;
+}
+
+.memberPhoto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9rem;
+  height: 10rem;
+  filter: drop-shadow(10px 10px 4px #0000000f);
+}
+
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 30rem;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 15rem);
+}
+
+.myProfileCardBody {
+  font-family: "Merriweather", serif;
+  border: black, 2px, dotted;
+}
+
+.myProfileCardBody p {
+  font-family: "Merriweather", serif;
+  font-size: 20px;
+}
+
+.photoContainer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#flag-container {
+  height: 252px;
+  background-color: white;
+}
+
+#flag-container img {
+  width: 100%;
+  height: 100%;
+}
+
+#info-container select {
+  display: block;
+  margin: 20px auto;
+  padding: 5px;
+  min-width: 100%;
+  width: 200px;
+  color: black;
+  font-size: 15px;
+  font-weight: 900;
+  text-align-last: center;
+}
+
+#info-container p {
+  padding: 0 10px;
+  font-weight: 600;
+}
+
+.Parent {
+  display: flex;
+  flex-direction: row;
+}
+
+.child1 {
+  width: 65%;
+  height: 100vh;
+  text-align: right;
+}
+
+.child2 {
+  width: 35%;
+  height: 100vh;
+}
+
+/* alternative button style
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #800040;
+  color: white;
+  border: 1px solid #800040;
+  margin: 0 1rem;
+}
+*/
+
+/* alternative button hover colors
+.btn:hover {
+  background-color: #9c1458;
+  border-color: #9c1458;
+}*/
