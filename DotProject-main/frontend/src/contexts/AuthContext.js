@@ -2,22 +2,16 @@
 
 import React, { useContext, useEffect, useState } from "react";
 
-import firebase, { db } from "../firebase";
-
-// import { db } from "../firebase";
-
-// firebase authentication module
-import "firebase/compat/auth";
+// use firebase to set the current user using the auth module created in firebase.js
+import { auth } from "../firebase";
 
 // for firebase storage API
 import { getStorage, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-const auth = firebase.auth();
-
 // this context will be used inside our provider
 const AuthContext = React.createContext();
 
-// function to let us use this context
+//function to let us use this context
 export function useAuth() {
   return useContext(AuthContext);
 }
@@ -25,6 +19,14 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+
+  //get handle to storage API
+  const storage = getStorage();
+
+  function signup(email, password) {
+    // return a promise to use inside of the actual signup form and return an error message or redirect user to the correct page
+    return auth.createUserWithEmailAndPassword(email, password);
+  }
 
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
@@ -38,34 +40,6 @@ export function AuthProvider({ children }) {
     return auth.sendPasswordResetEmail(email);
   }
 
-  // function signup(email, password) {
-  //   return auth.createUserWithEmailAndPassword(email, password);
-  // }
-
-  // function signup(email, password) {
-  //   auth.createUserWithEmailAndPassword(email, password).then((cred) => {
-  //     console.log(cred);
-  //   });
-  // }
-
-  function signup(email, password) {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setTimeout(
-          () =>
-            db
-              .collection("users")
-              .doc(user.uid)
-              .set({ email, uid: user.uid, location: "" }),
-          1000
-        );
-        console.log("ACCOUNT CREATED!");
-        console.log(userCredential);
-      });
-  }
-
   function updateEmail(email) {
     return currentUser.updateEmail(email);
   }
@@ -74,32 +48,29 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password);
   }
 
-  function updateProfile(photoURL) {
-    return currentUser.updateProfile({ photoURL });
+  function updateProfile(currentUser, { photoURL }) {
+    return currentUser.updateProfile(currentUser);
   }
 
-  // FUNCTION FOR UPLOADING PROFILE PHOTO
-  // get handle to storage API
-  const storage = getStorage();
-
-  async function upload(file, currentUser, setLoading) {
-    // make reference to a file on firebase store database
+  //FUNCTION FOR UPLOADING PROFILE PHOTO
+  async function photoUpload(file, currentUser, setLoading) {
+    //make reference to a file on firebase store database
     const fileRef = ref(storage, "profile-photos/" + currentUser.uid + ".png");
 
-    // create a loading state for when the file is uploading
+    //create a loading state for when the file is uploading
     setLoading(true);
 
-    // use uploadBytes from firebase to grab the file and upload it in the location specified in our reference file from earlier
-    await uploadBytes(fileRef, file);
+    //use uploadBytes from firebase to grab the file and upload it in the location specified in our reference file from earlier
+    const snapshot = await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
 
-    // update the user object's photoURL property with the new URL
-    updateProfile(photoURL);
+    //update the profile photo
+    // updateProfile(currentUser, { photoURL });
+    currentUser.updateProfile({ photoURL: { photoURL } });
 
     // now that the file is uploaded, set the loading state to false and give user feedback
     setLoading(false);
-
-    return photoURL;
+    alert("FILE UPLOADED!");
   }
 
   // we want auth.onAuthStateChanger to only run once when we mount our component so we put it in a useEffect()
@@ -108,7 +79,7 @@ export function AuthProvider({ children }) {
       setCurrentUser(user);
       setLoading(false);
     });
-    //unsubscribe us from the onAuthStateChanged listener when we unmount it
+    // unsubscribe us from the onAuthStateChanged listener when we unmount it
     return unsubscribe;
   }, []);
 
@@ -121,7 +92,7 @@ export function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
-    upload,
+    photoUpload,
     updateProfile,
   };
 
