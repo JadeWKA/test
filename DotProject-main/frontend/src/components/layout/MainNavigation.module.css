@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 .header {
   width: 100%;
@@ -8,11 +7,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: black; */
-  /* background-color: rgba(43, 140, 129, 255); */
+  background-color: black;
+  /*background-color: rgba(43, 140, 129, 255);*/
   padding: auto;
   text-shadow: 0 5px 5px rgba(0, 0, 0, 0.202);
-  font-family: "Merriweather";
+  font-family: "Catamaran", sans-serif;
+}
+
+.logo {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  font-family: "Fredoka One" !important;
 }
 
 .header ul {
@@ -44,23 +50,6 @@ header a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   /*font-family: 'Catamaran', sans-serif;*/
-}
-
-/*bounce effect on hover*/
-a{
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-a:hover, a:focus, a:active{
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 nav li a:hover {
@@ -120,10 +109,16 @@ nav li a:after {
   z-index: -1;
 }
 
-.logo {
-  font-size: 2rem;
-  color: white;
-  font-family: "Merriweather", serif;
+.header a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: rgba(255, 255, 255, 0.632);
 }
 
 .badge {
@@ -137,24 +132,4 @@ nav li a:after {
 .dotSmallLogo {
   height: 2.2rem;
   width: 2.2rem;
-}
-
-link.dotCornerLogo {
-  font: white;
-}
-
-#dotCornerLogo {
-  font: white;
-}
-.header a {
-  text-decoration: none;
-  font: "Merriweather";
-  size: 1.5rem;
-  color: black;
-}
-
-.header a:hover,
-.header a:active,
-.header a.active {
-  color: rgba(255, 255, 255, 0.632);
 }
